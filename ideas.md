@@ -20,4 +20,3 @@
 1. What healthy livestyles changes need to be made to live long?
 2. What health factor causes more death?
 
-3. 
