@@ -18,5 +18,5 @@
 [Healthy Living](https://www.kaggle.com/datasets/miadul/lifestyle-and-health-risk-prediction)
 
 1. What healthy livestyles changes need to be made to live long?
-2. What health factor causes more death?
+2. What health factor causes more death????
 
