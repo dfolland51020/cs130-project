@@ -15,7 +15,7 @@ A study comparison was done in the United States from 1960 to 2019 based off of 
 In order to narrow down the study and get a closer look into crime totals, we looked into the year 2000. This year in particular sparked the interest of many due to the widespread fear of threats to society; one of those threats being the Y2K bug that would cause computer failures accross the nation while others predicted the end of the world. Did crimes rise in the year 2000 from 1960? Let's examine some data. 
 
 #### Data Crime Values in 1960
-![Data Crime Values in 1960](images/Crime Values per State 1960.png?raw=true)
+![Data](Crime Values per State 1960.png)
 
 #### Data Crime Values in 2000
 ![Data Crime Values in 2000](images/Crime Values per State 2000.png?raw=true)
@@ -53,4 +53,5 @@ In really wanting to know what the total crime count is and what that particular
 ### The Unknown
 
 What causes this high crime? Is it the terrain? Is it nation-wide fear? Is it population? Is it caused by someone traveling across the U.S.? Only time will tell.
+
 
