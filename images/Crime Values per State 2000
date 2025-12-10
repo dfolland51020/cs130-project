@@ -1,0 +1,56 @@
+#I used google this one after mane frustrations so I could have a better visual just to add to my story
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+
+# Load data
+state_crime = pd.read_csv('state_crime.csv')
+
+# Columns for totals
+violent_cols = [
+    'Data.Totals.Violent.Assault',
+    'Data.Totals.Violent.Murder',
+    'Data.Totals.Violent.Rape',
+    'Data.Totals.Violent.Robbery'
+]
+
+property_cols = [
+    'Data.Totals.Property.Burglary',
+    'Data.Totals.Property.Larceny',
+    'Data.Totals.Property.Motor'
+]
+
+# Create totals for 1960 and 2000
+def compute_totals(state_crime, year):
+    df_year = state_crime[state_crime['Year'] == year].copy()
+    df_year = df_year[~df_year['State'].isin(['United States', 'District of Columbia'])]
+    df_year["Violent_Total"] = df_year[violent_cols].sum(axis=1)
+    df_year["Property_Total"] = df_year[property_cols].sum(axis=1)
+    return df_year[["State", "Violent_Total", "Property_Total"]]
+
+crime_1960 = compute_totals(state_crime, 1960)
+crime_2000 = compute_totals(state_crime, 2000)
+
+max_total = max(
+    crime_1960[["Violent_Total", "Property_Total"]].max().max(),
+    crime_2000[["Violent_Total", "Property_Total"]].max().max()
+)
+
+# Formatter for thousands
+formatter = FuncFormatter(lambda x, pos: f'{int(x/1000)}K')
+
+# 2000 plot
+plt.figure(figsize=(16, 8))
+x = range(len(crime_2000))
+
+plt.bar(x, crime_2000["Violent_Total"], width=0.4, label="Violent_Total")
+plt.bar([i + 0.4 for i in x], crime_2000["Property_Total"], width=0.4, label="Property_Total")
+
+plt.xticks([i + 0.2 for i in x], crime_2000["State"], rotation=90)
+plt.title("Crime Values per State — 2000")
+plt.ylabel("Total Crime Values")
+plt.ylim(0, max_total)
+plt.gca().yaxis.set_major_formatter(formatter)  # Apply thousands formatting
+plt.legend()
+plt.tight_layout()
+plt.show()
