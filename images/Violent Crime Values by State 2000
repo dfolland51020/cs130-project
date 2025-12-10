@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+
+#defining what columns I want to use to compare
+plot_data = state_crime_2000[['State', 'Data.Totals.Violent.All']]
+
+#sort by violet rates
+plot_data = plot_data.sort_values('Data.Totals.Violent.All')
+
+#alphabetical order or states
+plot_data = plot_data.sort_values('State')
+
+#creating the bar graph with sizing that will need to be adjusted and I goolged how to change the color so there was a difference
+plt.figure(figsize=(10, 8))
+plt.barh(plot_data['State'], plot_data['Data.Totals.Violent.All'], color = 'red')
+
+plt.xlabel('Violent Crime Values')
+plt.ylabel('State')
+plt.title('Violent Crime Values by State (2000)')
+
+plt.show()
